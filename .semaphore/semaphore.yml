@@ -14,6 +14,12 @@ blocks:
             - mtr -c 20 -w -r repo.hex.pm
             - mix hex.config http_timeout 20
             - mix hex.config
+            - sudo tcpdump -i eth0 -w /tmp/tcpdump.out -nn port 443 &
             - mix deps.get
-            - mtr -c 20 -w -r repo.hex.pm
           parallelism: 50
+      epilogue:
+        always:
+          commands:
+            - sudo killall -SIGINT tcpdump
+            - mtr -c 20 -w -r repo.hex.pm
+            - artifact push job --expire-in 1w /tmp/tcpdump.out
