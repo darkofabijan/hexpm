@@ -1,13 +1,17 @@
 version: v1.0
-name: Initial Pipeline
+name: Pipeline
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: 'Block #1'
+  - name: Build
     task:
       jobs:
-        - name: 'Job #1'
+        - name: Build
           commands:
             - checkout
+            - mix hex.config http_timeout 60
+            - mix hex.config
+            - mix deps.get
+          parallelism: 50
