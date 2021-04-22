@@ -11,7 +11,9 @@ blocks:
         - name: Build
           commands:
             - checkout
-            - mix hex.config http_timeout 60
+            - mtr -c 20 -w -r repo.hex.pm
+            - mix hex.config http_timeout 20
             - mix hex.config
             - mix deps.get
+            - mtr -c 20 -w -r repo.hex.pm
           parallelism: 50
