@@ -16,7 +16,7 @@ blocks:
             - mix hex.config
             - sudo tcpdump -i eth0 -w /tmp/tcpdump.out -nn port 443 &
             - retry -t 10 mix deps.get
-          parallelism: 50
+          parallelism: 11
       epilogue:
         always:
           commands:
@@ -36,3 +36,4 @@ blocks:
             - sudo tcpdump -i eth0 -w /tmp/tcpdump.out -nn port 443 &
             - 'HEX_MIRROR=https://hexpm.upyun.com mix deps.get'
             - echo "retry -t 10 mix deps.get"
+          parallelism: 50
