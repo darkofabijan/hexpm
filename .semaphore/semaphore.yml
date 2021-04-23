@@ -11,6 +11,7 @@ blocks:
         - name: Build
           commands:
             - checkout
+            - curl ifconfig.me
             - echo "mtr -c 20 -w -r repo.hex.pm"
             - echo "mix hex.config http_timeout 20"
             - mix hex.config
@@ -31,6 +32,7 @@ blocks:
         - name: Other mirror
           commands:
             - checkout
+            - curl ifconfig.me
             - mtr -c 20 -w -r hexpm.upyun.com
             - mtr -c 20 -w -r repo.hex.pm
             - echo "mix hex.config http_timeout 20"
