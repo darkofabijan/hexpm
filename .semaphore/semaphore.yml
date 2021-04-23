@@ -11,7 +11,7 @@ blocks:
       jobs:
         - name: deps.get
           commands:
-            - 'mtr -c 10 -r -2 -6 2a04:4e42:200::514'
+            - 'mtr -c 10 -r -w -6 2a04:4e42:200::514'
             - sysctl -a 2>/dev/null | grep disable_ipv6
             - checkout
             - curl ifconfig.me
