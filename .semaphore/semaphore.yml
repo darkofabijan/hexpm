@@ -31,7 +31,8 @@ blocks:
         - name: Other mirror
           commands:
             - checkout
-            - echo "mtr -c 20 -w -r repo.hex.pm"
+            - mtr -c 20 -w -r hexpm.upyun.com
+            - mtr -c 20 -w -r repo.hex.pm
             - echo "mix hex.config http_timeout 20"
             - sudo tcpdump -i eth0 -w /tmp/tcpdump.out -nn port 443 &
             - 'HEX_MIRROR=https://hexpm.upyun.com mix deps.get'
