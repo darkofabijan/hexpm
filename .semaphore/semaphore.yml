@@ -15,7 +15,7 @@ blocks:
             - echo "mix hex.config http_timeout 20"
             - mix hex.config
             - sudo tcpdump -i eth0 -w /tmp/tcpdump.out -nn port 443 &
-            - retry -c 10 mix deps.get
+            - retry -t 10 mix deps.get
           parallelism: 50
       epilogue:
         always:
