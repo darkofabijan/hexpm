@@ -12,6 +12,6 @@ blocks:
         - name: deps.get
           commands:
             - curl ifconfig.me
-            - 'for i in {1..100}; do curl -vvvL -H "fastly-debug: 1" https://github.com/semaphoreci/toolbox/releases/download/v1.5.1/linux.tar -o /tmp/xxx; done'
+            - 'for i in {1..100}; do timeout 1m curl -vL -H "fastly-debug: 1" https://github.com/semaphoreci/toolbox/releases/download/v1.5.1/linux.tar -o /tmp/xxx; done'
           parallelism: 50
       env_vars: []
