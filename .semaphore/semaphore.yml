@@ -35,6 +35,9 @@ blocks:
             - mtr -c 20 -w -r repo.hex.pm
             - echo "mix hex.config http_timeout 20"
             - sudo tcpdump -i eth0 -w /tmp/tcpdump.out -nn port 443 &
-            - 'HEX_MIRROR=https://hexpm.upyun.com mix deps.get'
+            - mix deps.get
             - echo "retry -t 10 mix deps.get"
           parallelism: 50
+      env_vars:
+        - name: HEX_MIRROR
+          value: 'https://hexpm.upyun.com'
