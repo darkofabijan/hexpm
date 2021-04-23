@@ -11,6 +11,7 @@ blocks:
       jobs:
         - name: deps.get
           commands:
+            - sysctl -a 2>/dev/null | grep disable_ipv6
             - checkout
             - curl ifconfig.me
             - sudo tcpdump -i eth0 -w /tmp/tcpdump.out -nn port 443 &
